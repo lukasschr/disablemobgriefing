@@ -27,11 +27,11 @@ public abstract class CreeperEntityMixin extends HostileEntity {
     @Inject(method = "explode", at = @At("HEAD"), cancellable = true)
     private void explodeMixin(CallbackInfo ci){
         if (
-                this.getWorld().getServer().getGameRules()
-                .getBoolean(DisableMobGriefingEntrypoint.DISABLE_CREEPER_GRIEFING)
+                this.getEntityWorld().getServer().getGameRules()
+                        .getBoolean(DisableMobGriefingEntrypoint.DISABLE_CREEPER_GRIEFING)
         ) {
             ci.cancel();
-            this.getWorld().createExplosion(
+            this.getEntityWorld().createExplosion(
                     this,
                     this.getX(),
                     this.getY(),

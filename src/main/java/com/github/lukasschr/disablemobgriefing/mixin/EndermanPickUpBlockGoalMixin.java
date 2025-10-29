@@ -20,8 +20,8 @@ public class EndermanPickUpBlockGoalMixin {
     @Inject(method = "canStart", at = @At("HEAD"), cancellable = true)
     private void canStartMixin(CallbackInfoReturnable<Boolean> cir) {
         if (
-                this.enderman.getWorld().getServer() != null &&
-                this.enderman.getWorld().getServer().getGameRules()
+                this.enderman.getEntityWorld().getServer() != null &&
+                this.enderman.getEntityWorld().getServer().getGameRules()
                         .getBoolean(DisableMobGriefingEntrypoint.DISABLE_ENDERMAN_GRIEFING)
         ) {
             cir.setReturnValue(false);
